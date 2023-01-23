@@ -10,8 +10,9 @@ import org.junit.Test
 
 class AssertionUserTestTest {
 
-    private lateinit var bot : Model
- 
+
+    private lateinit var bot: Model
+
   companion object{
     private lateinit var juan: Model
 
@@ -26,7 +27,7 @@ class AssertionUserTestTest {
     @AfterClass @JvmStatic
     fun tearDownCommon (){
         juan= Model()
-        println("After")
+        println("AfterClass")
     }
 
 }
@@ -34,14 +35,14 @@ class AssertionUserTestTest {
 
     @Before
     fun setup(){
-         juan = Model("16bit",10,true)
+         bot = Model("16bit",10,false)
     println("Before")
     }
 
     //despues de cada prueba
     @After
     fun tearDown(){
-         juan= Model()
+         bot= Model()
         println("After")
     }
 
@@ -59,7 +60,12 @@ class AssertionUserTestTest {
         assertNotNull(juan)
         println("CheckNotNull")
     }
+    @Test
+    fun chekNotSameUserTest(){
 
+        assertNotSame(bot,juan)
+        println("ChcekNOTSameUserTest")
+    }
     @Test
     fun chekSameUserTest(){
         val copyjuna = juan

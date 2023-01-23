@@ -3,6 +3,11 @@ package com.kevin.fundamentosjunit
 class Assertion {
 
     private val user = Model("Kevin",32)
+    private var location = "US"
+
+    fun setlocation(location : String){
+        this.location = location
+    }
 
     fun getLuckyNumbers():Array<Int>{
     return arrayOf(23,32)
@@ -24,7 +29,9 @@ class Assertion {
     }
     fun isAdult(user:Model): Boolean{
         if(!user.isHuman) return true
-        return user.age >= 18
+
+        return if (location == "US") user.age >= 21
+        else user.age >= 18
     }
 
 }
